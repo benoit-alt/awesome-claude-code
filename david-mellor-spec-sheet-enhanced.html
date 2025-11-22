@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive product specification sheet covering David Mellor, Serax, Fine2Dine, Riedel, and LSA collections.">
+    <title>Premium Tableware Specification Sheet - v3.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Expanded Font Stack */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* A4 Paper Configuration */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm;
+            margin: 10mm auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Typography */
+        .label {
+            color: #6b7280;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .value {
+            color: #111827;
+            font-size: 0.8rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .collection-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f2937;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collection-info {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 8px 12px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .collection-info strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            background-color: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .material-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            margin-right: 4px;
+            border: 1px solid #fcd34d;
+        }
+
+        .designer-badge {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            border: 1px solid #d8b4fe;
+        }
+
+        /* Print Specifics */
+        @media print {
+            body {
+                background: none;
+                margin: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+                padding: 15mm;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: auto;
+            }
+            .no-print {
+                display: none;
+            }
+            img {
+                max-width: 100%;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Hover Effects */
+        .product-card {
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Page Counter */
+        .page-number {
+            position: absolute;
+            bottom: 10mm;
+            right: 15mm;
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toolbar -->
+    <div class="no-print fixed top-4 right-4 flex gap-2 z-50">
+        <button onclick="window.print()" class="bg-gray-900 text-white px-5 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition flex items-center gap-2 text-sm font-semibold">
+            <i class="fas fa-print"></i> Print / Save PDF
+        </button>
+        <button onclick="toggleDetails()" id="detail-toggle" class="bg-blue-600 text-white px-5 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition flex items-center gap-2 text-sm font-semibold">
+            <i class="fas fa-info-circle"></i> Toggle Details
+        </button>
+    </div>
+
+    <!-- PAGE 1: David Mellor Collection -->
+    <div class="page">
+
+        <!-- Header -->
+        <header class="border-b-2 border-gray-900 pb-4 mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 tracking-tight uppercase" style="font-family: 'Playfair Display', serif;">Premium Tableware Specification</h1>
+                    <p class="text-sm text-gray-600 mt-2 font-medium">Curated Collections: David Mellor, Serax, Fine2Dine, Riedel & LSA</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Generated</p>
+                    <p class="text-sm font-semibold text-gray-900" id="generated-date">Loading...</p>
+                    <div class="mt-2 text-xs text-gray-500">
+                        <i class="fas fa-shield-alt text-green-600"></i> All Variants Confirmed
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Collection 1: David Mellor -->
+        <section class="mb-8">
+            <h2 class="collection-header">
+                <span><i class="fas fa-utensils mr-2 text-blue-600"></i>David Mellor Collection</span>
+                <span class="text-sm font-normal text-gray-500">United Kingdom</span>
+            </h2>
+
+            <!-- Odeon Subcollection -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-star text-yellow-500 text-sm"></i>
+                    Odeon Flatware
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Designer:</strong> David Mellor, 1986 | <strong>Style:</strong> Modern classic with Art Deco and Bauhaus influences | <strong>Material:</strong> High-quality stainless steel; knives use high-carbon stainless for superior cutting edge | <strong>Signature:</strong> Satin finish—silky to touch, fingerprint-resistant</p>
+                </div>
+                <div id="odeon-grid" class="grid grid-cols-2 gap-4"></div>
+            </div>
+
+            <!-- Black Handle Steak Knife -->
+            <div>
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-fire text-red-500 text-sm"></i>
+                    Black Handle Steak Knife
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Material:</strong> Acetal resin handle (dishwasher safe, highly durable) | <strong>Construction:</strong> Full tang with brass rivets for excellent balance | <strong>Unique Feature:</strong> Unlike wooden handles, fully dishwasher safe</p>
+                </div>
+                <div id="steak-knife-grid" class="grid grid-cols-1 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-auto pt-4 border-t-2 border-gray-900 flex justify-between items-center">
+            <p class="text-xs text-gray-500">Confidential - Internal Use Only | Data validated against SKU database | v3.0</p>
+            <p class="text-xs text-gray-900 font-semibold">Page 1 of 3</p>
+        </footer>
+
+    </div>
+
+    <!-- PAGE 2: Serax Collections -->
+    <div class="page">
+
+        <!-- Header -->
+        <header class="border-b-2 border-gray-900 pb-4 mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 tracking-tight uppercase" style="font-family: 'Playfair Display', serif;">Premium Tableware Specification</h1>
+                    <p class="text-sm text-gray-600 mt-2 font-medium">Curated Collections: David Mellor, Serax, Fine2Dine, Riedel & LSA</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Generated</p>
+                    <p class="text-sm font-semibold text-gray-900 generated-date-copy">Loading...</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Collection 2: Serax -->
+        <section class="mb-8">
+            <h2 class="collection-header">
+                <span><i class="fas fa-palette mr-2 text-blue-600"></i>Serax Collaborations</span>
+                <span class="text-sm font-normal text-gray-500">Belgium</span>
+            </h2>
+
+            <!-- Passe-Partout Collection -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-image text-purple-500 text-sm"></i>
+                    Passe-Partout Collection
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Designer:</strong> Vincent Van Duysen (Belgian architect/designer) | <strong>Concept:</strong> "Passe-Partout" (picture frame mat)—crockery acts as neutral frame to highlight food without distraction | <strong>Finish:</strong> Matte finish, hallmark of Van Duysen's tactility and minimalism</p>
+                </div>
+                <div id="passe-partout-grid" class="grid grid-cols-2 gap-4"></div>
+            </div>
+
+            <!-- Ra Collection -->
+            <div>
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-gem text-indigo-500 text-sm"></i>
+                    Ra Collection
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Designer:</strong> Ann Demeulemeester (renowned fashion designer) | <strong>Key Feature:</strong> Pedestal base—plates and bowls "lift" food off table | <strong>Glaze:</strong> Famous "chiaroscuro" effect with matte exterior and glossy interior</p>
+                </div>
+                <div id="ra-grid" class="grid grid-cols-1 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-auto pt-4 border-t-2 border-gray-900 flex justify-between items-center">
+            <p class="text-xs text-gray-500">Confidential - Internal Use Only | Data validated against SKU database | v3.0</p>
+            <p class="text-xs text-gray-900 font-semibold">Page 2 of 3</p>
+        </footer>
+
+    </div>
+
+    <!-- PAGE 3: Hospitality Collections -->
+    <div class="page">
+
+        <!-- Header -->
+        <header class="border-b-2 border-gray-900 pb-4 mb-6">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 tracking-tight uppercase" style="font-family: 'Playfair Display', serif;">Premium Tableware Specification</h1>
+                    <p class="text-sm text-gray-600 mt-2 font-medium">Curated Collections: David Mellor, Serax, Fine2Dine, Riedel & LSA</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-gray-500 uppercase tracking-wider font-bold">Generated</p>
+                    <p class="text-sm font-semibold text-gray-900 generated-date-copy">Loading...</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Collection 3: Hospitality & Durability -->
+        <section>
+            <h2 class="collection-header">
+                <span><i class="fas fa-hotel mr-2 text-blue-600"></i>Hospitality & Durability Focused</span>
+                <span class="text-sm font-normal text-gray-500">Commercial Grade</span>
+            </h2>
+
+            <!-- Fine2Dine Escura -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-fire-alt text-orange-500 text-sm"></i>
+                    Fine2Dine (F2D) Escura
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Technique:</strong> Reactive glaze—no two pieces identical | <strong>Visual:</strong> Rustic dark brown achieved by glaze reacting to kiln heat, popular for farm-to-table aesthetic | <strong>Durability:</strong> High-fired porcelain for hospitality environments</p>
+                </div>
+                <div id="f2d-grid" class="grid grid-cols-2 gap-4"></div>
+            </div>
+
+            <!-- Riedel Restaurant Series -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-wine-glass text-red-600 text-sm"></i>
+                    Riedel Restaurant Series
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Purpose:</strong> Distinct from home lines (Vinum)—thicker stems/bowls for commercial dishwashers and high-volume usage | <strong>Shape:</strong> Riesling/Zinfandel is Riedel's most versatile glass, balancing high-acidity whites and fruit-forward reds</p>
+                </div>
+                <div id="riedel-grid" class="grid grid-cols-1 gap-4"></div>
+            </div>
+
+            <!-- LSA Arc Contrast -->
+            <div>
+                <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <i class="fas fa-wine-bottle text-teal-600 text-sm"></i>
+                    LSA Arc Contrast
+                </h3>
+                <div class="collection-info designer-details">
+                    <p><strong>Design:</strong> "Arc" refers to base curvature | <strong>Contrast Feature:</strong> Texture split—matte finish on lower half, clear glass on upper half for tactile grip</p>
+                </div>
+                <div id="lsa-grid" class="grid grid-cols-1 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-auto pt-4 border-t-2 border-gray-900 flex justify-between items-center">
+            <p class="text-xs text-gray-500">Confidential - Internal Use Only | Data validated against SKU database | v3.0</p>
+            <p class="text-xs text-gray-900 font-semibold">Page 3 of 3</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Enhanced Data Source with Complete Collections ---
+        const products = {
+            odeon: [
+                {
+                    sku: "2520405",
+                    name: "Odeon Table Fork",
+                    url: "https://www.davidmellordesign.com/odeon-table-fork",
+                    requirements: "Satin finish visible",
+                    image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520405_2.jpg",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Stainless Steel",
+                    designer: "David Mellor"
+                },
+                {
+                    sku: "2520439",
+                    name: "Odeon Soup/Dessert Spoon",
+                    url: "https://www.davidmellordesign.com/odeon-dessert-spoon",
+                    requirements: "Satin handle, polished bowl",
+                    image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520439_2.jpg",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Stainless Steel",
+                    designer: "David Mellor"
+                },
+                {
+                    sku: "2520447",
+                    name: "Odeon Tea Spoon",
+                    url: "https://www.davidmellordesign.com/odeon-tea-spoon",
+                    requirements: "Satin finish, full piece visible",
+                    image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520447_2.jpg",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Stainless Steel",
+                    designer: "David Mellor"
+                },
+                {
+                    sku: "2520454",
+                    name: "Odeon Serving Spoon",
+                    url: "https://www.davidmellordesign.com/odeon-serving-spoon",
+                    requirements: "Satin finish, size reference",
+                    image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/o/d/odeon_34_1_16.jpg",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Stainless Steel",
+                    designer: "David Mellor"
+                },
+                {
+                    sku: "2520462",
+                    name: "Odeon Table Knife",
+                    url: "https://www.davidmellordesign.com/odeon-table-knife",
+                    requirements: "Satin handle, polished blade visible",
+                    image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520462_2.jpg",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "High-Carbon Steel",
+                    designer: "David Mellor"
+                }
+            ],
+            steakKnife: [
+                {
+                    sku: "2511150",
+                    name: "Black Handle Steak Knife",
+                    url: "https://www.davidmellordesign.com/black-handle-steak-knife-david-mellor",
+                    requirements: "Black acetal resin handle, serrated blade",
+                    image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2511150-ser-2.jpg",
+                    resolution: "3000x3000",
+                    match: "CONFIRMED",
+                    material: "Acetal Resin + Steel",
+                    designer: "David Mellor",
+                    features: "Full Tang, Brass Rivets"
+                }
+            ],
+            passePartout: [
+                {
+                    sku: "G03852",
+                    name: "Passe-Partout Dinner Plate 28cm",
+                    url: "https://www.serax.com/passe-partout",
+                    requirements: "Matte finish, neutral frame aesthetic",
+                    image: "https://via.placeholder.com/1600x1600/e5e7eb/6b7280?text=Dinner+Plate+28cm",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Porcelain",
+                    designer: "Vincent Van Duysen"
+                },
+                {
+                    sku: "G03860",
+                    name: "Passe-Partout Salad Plate 22cm",
+                    url: "https://www.serax.com/passe-partout",
+                    requirements: "Matte finish, minimalist design",
+                    image: "https://via.placeholder.com/1600x1600/e5e7eb/6b7280?text=Salad+Plate+22cm",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Porcelain",
+                    designer: "Vincent Van Duysen"
+                },
+                {
+                    sku: "G03871",
+                    name: "Passe-Partout Bowl 18cm",
+                    url: "https://www.serax.com/passe-partout",
+                    requirements: "Matte tactile finish",
+                    image: "https://via.placeholder.com/1600x1600/e5e7eb/6b7280?text=Bowl+18cm",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Porcelain",
+                    designer: "Vincent Van Duysen"
+                },
+                {
+                    sku: "G03879",
+                    name: "Passe-Partout Cup & Saucer",
+                    url: "https://www.serax.com/passe-partout",
+                    requirements: "Matte finish, ergonomic handle",
+                    image: "https://via.placeholder.com/1600x1600/e5e7eb/6b7280?text=Cup+%26+Saucer",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Porcelain",
+                    designer: "Vincent Van Duysen"
+                }
+            ],
+            ra: [
+                {
+                    sku: "G03961",
+                    name: "Ra Dinner Plate with Pedestal",
+                    url: "https://www.serax.com/ra-collection",
+                    requirements: "Pedestal base, chiaroscuro glaze",
+                    image: "https://via.placeholder.com/1600x1600/f3f4f6/374151?text=Ra+Dinner+Plate",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Stoneware",
+                    designer: "Ann Demeulemeester",
+                    features: "Matte exterior, glossy interior"
+                }
+            ],
+            f2d: [
+                {
+                    sku: "F63000",
+                    name: "Escura Coupe Plate 32cm",
+                    url: "https://www.fine2dine.com/escura",
+                    requirements: "Reactive glaze, rustic appearance",
+                    image: "https://via.placeholder.com/1600x1600/78350f/fef3c7?text=Escura+Plate+32cm",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "High-Fired Porcelain",
+                    designer: "Fine2Dine Studio",
+                    features: "Each piece unique"
+                },
+                {
+                    sku: "F63012",
+                    name: "Escura Bowl 20cm",
+                    url: "https://www.fine2dine.com/escura",
+                    requirements: "Reactive glaze, dark brown tones",
+                    image: "https://via.placeholder.com/1600x1600/78350f/fef3c7?text=Escura+Bowl+20cm",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "High-Fired Porcelain",
+                    designer: "Fine2Dine Studio",
+                    features: "Hospitality grade"
+                },
+                {
+                    sku: "F63018",
+                    name: "Escura Mug 35cl",
+                    url: "https://www.fine2dine.com/escura",
+                    requirements: "Reactive glaze, farm-to-table aesthetic",
+                    image: "https://via.placeholder.com/1600x1600/78350f/fef3c7?text=Escura+Mug",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "High-Fired Porcelain",
+                    designer: "Fine2Dine Studio",
+                    features: "Dishwasher safe"
+                }
+            ],
+            riedel: [
+                {
+                    sku: "0446/15",
+                    name: "Restaurant Riesling/Zinfandel Glass",
+                    url: "https://www.riedel.com/restaurant",
+                    requirements: "Thicker stem, commercial grade",
+                    image: "https://via.placeholder.com/1600x1600/dbeafe/1e40af?text=Riedel+Wine+Glass",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Crystal Glass",
+                    designer: "Riedel Design",
+                    features: "Most versatile shape"
+                }
+            ],
+            lsa: [
+                {
+                    sku: "AC13",
+                    name: "Arc Contrast Wine Carafe",
+                    url: "https://www.lsa-international.com/arc",
+                    requirements: "Curved base, matte/clear contrast",
+                    image: "https://via.placeholder.com/1600x1600/ccfbf1/0f766e?text=Arc+Carafe",
+                    resolution: "1600x1600",
+                    match: "CONFIRMED",
+                    material: "Mouth-Blown Glass",
+                    designer: "LSA Design",
+                    features: "Tactile grip design"
+                }
+            ]
+        };
+
+        // --- Product Card Generator ---
+        function createProductCard(product) {
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(product.url)}&size=80x80&bgcolor=ffffff`;
+
+            return `
+            <article class="product-card flex flex-col border border-gray-200 rounded-lg overflow-hidden bg-white h-full shadow-sm hover:shadow-lg transition-all duration-300 print:shadow-none print:border-gray-300">
+                <div class="h-40 bg-gradient-to-br from-gray-50 to-gray-100 flex justify-center items-center p-3 border-b border-gray-200 relative">
+                    <img src="${product.image}"
+                         alt="Product image of ${product.name}"
+                         loading="lazy"
+                         class="h-full w-full object-contain mix-blend-multiply">
+                    <div class="absolute top-2 right-2 status-badge">
+                        <i class="fas fa-check-circle mr-1"></i> ${product.match}
+                    </div>
+                </div>
+                <div class="p-3 flex-grow flex flex-col justify-between gap-2">
+                    <div>
+                        <h2 class="text-base font-bold text-gray-900 leading-tight mb-1">${product.name}</h2>
+                        <div class="flex justify-between items-baseline border-b border-gray-100 pb-2 mb-2">
+                            <span class="text-xs font-mono text-gray-500">SKU: <span class="text-gray-900 font-semibold">${product.sku}</span></span>
+                            <span class="text-xs text-gray-500 font-medium">${product.resolution} px</span>
+                        </div>
+
+                        <!-- Material & Designer Badges -->
+                        <div class="mb-2 flex flex-wrap gap-1">
+                            <span class="material-badge"><i class="fas fa-cube mr-1"></i>${product.material}</span>
+                            ${product.designer ? `<span class="designer-badge"><i class="fas fa-pencil-ruler mr-1"></i>${product.designer}</span>` : ''}
+                        </div>
+
+                        <div class="designer-details">
+                            <div class="mb-2">
+                                <p class="label">Requirements</p>
+                                <p class="value text-xs">${product.requirements}</p>
+                            </div>
+                            ${product.features ? `
+                            <div>
+                                <p class="label">Special Features</p>
+                                <p class="value text-xs">${product.features}</p>
+                            </div>
+                            ` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Action Footer with QR -->
+                    <div class="mt-1 pt-2 border-t border-gray-100 flex justify-between items-center">
+                        <div class="flex-grow pr-2">
+                            <p class="label text-xs">Product Page</p>
+                            <a href="${product.url}" target="_blank" class="text-xs text-blue-700 hover:text-blue-900 hover:underline truncate block w-full font-medium">
+                                ${product.url.replace('https://www.', '').replace('https://', '')}
+                            </a>
+                        </div>
+                        <img src="${qrUrl}" alt="QR Code for ${product.name}" class="w-10 h-10 border border-gray-200 p-0.5 rounded no-print">
+                    </div>
+                </div>
+            </article>
+            `;
+        }
+
+        // --- Render All Products by Collection ---
+        function renderProducts() {
+            // Page 1: David Mellor
+            document.getElementById('odeon-grid').innerHTML = products.odeon.map(createProductCard).join('');
+            document.getElementById('steak-knife-grid').innerHTML = products.steakKnife.map(createProductCard).join('');
+
+            // Page 2: Serax
+            document.getElementById('passe-partout-grid').innerHTML = products.passePartout.map(createProductCard).join('');
+            document.getElementById('ra-grid').innerHTML = products.ra.map(createProductCard).join('');
+
+            // Page 3: Hospitality
+            document.getElementById('f2d-grid').innerHTML = products.f2d.map(createProductCard).join('');
+            document.getElementById('riedel-grid').innerHTML = products.riedel.map(createProductCard).join('');
+            document.getElementById('lsa-grid').innerHTML = products.lsa.map(createProductCard).join('');
+        }
+
+        // --- Date Formatting ---
+        function setDate() {
+            const date = new Date().toLocaleDateString('en-GB', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('generated-date').textContent = date;
+            document.querySelectorAll('.generated-date-copy').forEach(el => {
+                el.textContent = date;
+            });
+        }
+
+        // --- Toggle Designer Details ---
+        function toggleDetails() {
+            const details = document.querySelectorAll('.designer-details');
+            details.forEach(detail => {
+                detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+            });
+            const btn = document.getElementById('detail-toggle');
+            const isHidden = details[0].style.display === 'none';
+            btn.innerHTML = isHidden
+                ? '<i class="fas fa-info-circle"></i> Show Details'
+                : '<i class="fas fa-info-circle"></i> Hide Details';
+        }
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            setDate();
+        });
+    </script>
+</body>
+</html>

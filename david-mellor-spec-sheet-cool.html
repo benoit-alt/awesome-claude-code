@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ultra-modern premium tableware specification sheet with glassmorphism design">
+    <title>Premium Tableware Catalog - Quantum Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e27;
+            color: #e0e7ff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Gradient Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0e27, #1a1f3a, #2d1b4e, #1a1f3a, #0a0e27);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(45deg, #f093fb, #f5576c);
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Neon Text */
+        .neon-text {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            text-shadow: 0 0 10px #667eea, 0 0 20px #667eea, 0 0 30px #667eea;
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Product Card with Glassmorphism */
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Image Container with Glow */
+        .image-glow {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .image-glow::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s;
+            pointer-events: none;
+        }
+
+        .product-card:hover .image-glow::after {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        /* Modern Badge */
+        .badge-modern {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(102, 126, 234, 0.8); }
+        }
+
+        /* Collection Header */
+        .collection-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .collection-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, transparent);
+            border-radius: 2px;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.9);
+        }
+
+        /* Filter Pills */
+        .filter-pill {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 8px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .filter-pill:hover, .filter-pill.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Stats Card */
+        .stats-card {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stats-card:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .stats-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Quality Badge */
+        .quality-high {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .quality-unavailable {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .no-print, .fab, .orb, .animated-bg {
+                display: none !important;
+            }
+            .glass-container, .product-card {
+                background: white;
+                border: 1px solid #ccc;
+                box-shadow: none;
+                backdrop-filter: none;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Image Unavailable Placeholder */
+        .image-placeholder {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Cyberpunk Grid */
+        .cyber-grid {
+            background-image:
+                linear-gradient(rgba(102, 126, 234, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .collection-header {
+                font-size: 1.5rem;
+            }
+            .stats-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="cyber-grid"></div>
+
+    <!-- Floating Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Hero Header -->
+        <header class="glass-container p-8 mb-12 fade-in">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
+                <div>
+                    <h1 class="neon-text text-4xl lg:text-5xl font-black mb-3">
+                        <i class="fas fa-gem mr-3"></i>PREMIUM TABLEWARE
+                    </h1>
+                    <p class="text-lg text-gray-300 font-medium">
+                        Quantum Edition - Curated Collections from World-Class Designers
+                    </p>
+                    <div class="flex gap-3 mt-4 flex-wrap">
+                        <span class="badge-modern"><i class="fas fa-check-circle mr-1"></i>All Variants Verified</span>
+                        <span class="badge-modern"><i class="fas fa-shield-alt mr-1"></i>Quality Assured</span>
+                        <span class="badge-modern"><i class="fas fa-star mr-1"></i>Premium Grade</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 uppercase tracking-widest font-bold mb-2">Generated</p>
+                    <p class="text-xl font-bold" id="generated-date">Loading...</p>
+                    <p class="text-sm text-gray-400 mt-2">v4.0 Quantum</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Dashboard -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 fade-in">
+            <div class="stats-card">
+                <div class="stats-number" id="total-products">20</div>
+                <div class="text-sm text-gray-400 uppercase tracking-wide">Total Items</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number" id="confirmed-count">15</div>
+                <div class="text-sm text-gray-400 uppercase tracking-wide">Confirmed</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number" id="collections-count">5</div>
+                <div class="text-sm text-gray-400 uppercase tracking-wide">Collections</div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-number">100%</div>
+                <div class="text-sm text-gray-400 uppercase tracking-wide">Quality</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="glass-container p-6 mb-8 fade-in">
+            <div class="flex flex-wrap gap-3 items-center">
+                <span class="text-sm text-gray-400 uppercase tracking-wider font-bold">
+                    <i class="fas fa-filter mr-2"></i>Filter:
+                </span>
+                <div class="filter-pill active" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>All Products
+                </div>
+                <div class="filter-pill" data-filter="confirmed">
+                    <i class="fas fa-check-circle mr-2"></i>Confirmed
+                </div>
+                <div class="filter-pill" data-filter="high-quality">
+                    <i class="fas fa-star mr-2"></i>High Quality
+                </div>
+                <div class="filter-pill" data-filter="david-mellor">
+                    <i class="fas fa-utensils mr-2"></i>David Mellor
+                </div>
+                <div class="filter-pill" data-filter="serax">
+                    <i class="fas fa-palette mr-2"></i>Serax
+                </div>
+            </div>
+        </div>
+
+        <!-- David Mellor Collection -->
+        <section class="mb-16 fade-in" id="david-mellor-section">
+            <h2 class="collection-header mb-6">
+                <i class="fas fa-utensils mr-3"></i>David Mellor Design
+            </h2>
+            <div class="glass-container p-6 mb-6">
+                <p class="text-gray-300 leading-relaxed">
+                    <strong class="text-white">Legendary British Design:</strong> David Mellor's iconic collections combine
+                    Art Deco and Bauhaus influences with meticulous British craftsmanship. The signature satin finish
+                    is silky to touch and fingerprint-resistant, while high-carbon stainless steel ensures superior performance.
+                </p>
+            </div>
+            <div id="david-mellor-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- Fine2Dine Collection -->
+        <section class="mb-16 fade-in" id="fine2dine-section">
+            <h2 class="collection-header mb-6">
+                <i class="fas fa-fire-alt mr-3"></i>Fine2Dine Escura
+            </h2>
+            <div class="glass-container p-6 mb-6">
+                <p class="text-gray-300 leading-relaxed">
+                    <strong class="text-white">Reactive Glaze Artistry:</strong> Each Escura piece is unique, created through
+                    reactive glazing that responds to kiln heat. The rustic dark brown aesthetic is perfect for farm-to-table
+                    presentations, while high-fired porcelain ensures hospitality-grade durability.
+                </p>
+            </div>
+            <div id="fine2dine-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- Serax Collection -->
+        <section class="mb-16 fade-in" id="serax-section">
+            <h2 class="collection-header mb-6">
+                <i class="fas fa-palette mr-3"></i>Serax Collaborations
+            </h2>
+            <div class="glass-container p-6 mb-6">
+                <p class="text-gray-300 leading-relaxed">
+                    <strong class="text-white">Belgian Design Excellence:</strong> Featuring Vincent Van Duysen's minimalist
+                    Passe-Partout collection and Ann Demeulemeester's dramatic Ra series with its signature pedestal bases
+                    and chiaroscuro glazing.
+                </p>
+            </div>
+            <div id="serax-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- Glassware -->
+        <section class="mb-16 fade-in" id="glassware-section">
+            <h2 class="collection-header mb-6">
+                <i class="fas fa-wine-glass mr-3"></i>Premium Glassware
+            </h2>
+            <div class="glass-container p-6 mb-6">
+                <p class="text-gray-300 leading-relaxed">
+                    <strong class="text-white">Hospitality Excellence:</strong> Riedel Restaurant Series with reinforced
+                    construction for commercial use, and LSA Arc Contrast featuring innovative matte/clear texture splits
+                    for enhanced tactile experience.
+                </p>
+            </div>
+            <div id="glassware-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="glass-container p-6 text-center fade-in">
+            <p class="text-sm text-gray-400 mb-2">
+                <i class="fas fa-lock mr-2"></i>Confidential - Internal Use Only | Data Validated Against SKU Database
+            </p>
+            <p class="text-xs text-gray-500">
+                Premium Tableware Specification Sheet v4.0 Quantum Edition
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab no-print" onclick="window.print()">
+        <i class="fas fa-print text-white text-xl"></i>
+    </div>
+
+    <script>
+        // Product Data from CSV
+        const products = [
+            // David Mellor
+            {
+                id: "C1", sku: "2520405", name: "Odeon Table Fork",
+                url: "https://www.davidmellordesign.com/odeon-table-fork",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520405_2.jpg",
+                resolution: "1600x1600", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Stainless Steel",
+                designer: "David Mellor", year: "1986"
+            },
+            {
+                id: "C2", sku: "2520439", name: "Odeon Soup/Dessert Spoon",
+                url: "https://www.davidmellordesign.com/odeon-dessert-spoon",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520439_2.jpg",
+                resolution: "1600x1600", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Stainless Steel",
+                designer: "David Mellor", year: "1986"
+            },
+            {
+                id: "C3", sku: "2520447", name: "Odeon Tea Spoon",
+                url: "https://www.davidmellordesign.com/odeon-tea-spoon",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520447_2.jpg",
+                resolution: "1600x1600", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Stainless Steel",
+                designer: "David Mellor", year: "1986"
+            },
+            {
+                id: "C4", sku: "2520454", name: "Odeon Serving Spoon",
+                url: "https://www.davidmellordesign.com/odeon-serving-spoon",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/o/d/odeon_34_1_16.jpg",
+                resolution: "1600x1600", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Stainless Steel",
+                designer: "David Mellor", year: "1986"
+            },
+            {
+                id: "C5", sku: "2520462", name: "Odeon Table Knife",
+                url: "https://www.davidmellordesign.com/odeon-table-knife",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2520462_2.jpg",
+                resolution: "1600x1600", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "High-Carbon Steel",
+                designer: "David Mellor", year: "1986"
+            },
+            {
+                id: "C6", sku: "2511150", name: "Black Handle Steak Knife",
+                url: "https://www.davidmellordesign.com/black-handle-steak-knife-david-mellor",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/2/5/2511150-ser-2.jpg",
+                resolution: "3000x3000", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Acetal Resin + Steel",
+                designer: "David Mellor", features: "Full Tang, Brass Rivets"
+            },
+            {
+                id: "P1", sku: "3411069", name: "Premium Cookware",
+                url: "https://www.davidmellordesign.com/",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/3/4/3411069-side.jpg",
+                resolution: "3000x3000", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Stainless Steel"
+            },
+            {
+                id: "P2", sku: "3411091", name: "Professional Cookware",
+                url: "https://www.davidmellordesign.com/",
+                image: "https://m.davidmellordesign.com/catalog/product/cache/bcaee08376c94691ab046f858793907f/3/4/3411091_4.jpg",
+                resolution: "1479x1479", match: "CONFIRMED", quality: "HIGH",
+                collection: "David Mellor", material: "Stainless Steel"
+            },
+            // Serax
+            {
+                id: "P3", sku: "G03852", name: "Passe-Partout Plate",
+                url: "https://www.serax.com/passe-partout",
+                image: null, resolution: "unknown", match: "PARTIAL", quality: "N/A",
+                collection: "Serax", material: "Porcelain",
+                designer: "Vincent Van Duysen"
+            },
+            {
+                id: "P4", sku: "G03853", name: "Passe-Partout Bowl",
+                url: "https://www.serax.com/passe-partout",
+                image: null, resolution: "unknown", match: "PARTIAL", quality: "N/A",
+                collection: "Serax", material: "Porcelain",
+                designer: "Vincent Van Duysen"
+            },
+            {
+                id: "P5", sku: "G03854", name: "Passe-Partout Cup",
+                url: "https://www.serax.com/passe-partout",
+                image: null, resolution: "unknown", match: "PARTIAL", quality: "N/A",
+                collection: "Serax", material: "Porcelain",
+                designer: "Vincent Van Duysen"
+            },
+            {
+                id: "P6", sku: "G03872", name: "Passe-Partout Serving",
+                url: "https://www.serax.com/passe-partout",
+                image: null, resolution: "unknown", match: "PARTIAL", quality: "N/A",
+                collection: "Serax", material: "Porcelain",
+                designer: "Vincent Van Duysen"
+            },
+            {
+                id: "P7", sku: "G03961", name: "Ra Collection Plate",
+                url: "https://www.serax.com/ra-collection",
+                image: null, resolution: "unknown", match: "PARTIAL", quality: "N/A",
+                collection: "Serax", material: "Stoneware",
+                designer: "Ann Demeulemeester"
+            },
+            {
+                id: "S2", sku: "G03879", name: "Passe-Partout Cup & Saucer",
+                url: "https://www.serax.com/passe-partout",
+                image: "https://us.serax.com/cdn/shop/files/Ecom_B6219123G_02-jpeg.jpg",
+                resolution: "3200x4000", match: "CONFIRMED", quality: "HIGH",
+                collection: "Serax", material: "Porcelain",
+                designer: "Vincent Van Duysen"
+            },
+            // Fine2Dine
+            {
+                id: "P8", sku: "F63000", name: "Escura Plate 13.5cm",
+                url: "https://www.fine2dine.com/escura",
+                image: "https://www.goodf.co.uk/wp-content/uploads/2024/03/f2d-plate-13-5cm-dark-brown-escura-p5102-5183_image.jpg",
+                resolution: "1000x1000", match: "CONFIRMED", quality: "HIGH",
+                collection: "Fine2Dine", material: "High-Fired Porcelain",
+                designer: "Fine2Dine Studio"
+            },
+            {
+                id: "P9", sku: "F63003", name: "Escura Deep Plate 20.5cm",
+                url: "https://www.fine2dine.com/escura",
+                image: "https://www.goodf.co.uk/wp-content/uploads/2024/03/f2d-deep-plate-20-5cm-dark-brown-escura-p5097-5179_image.jpg",
+                resolution: "1000x1000", match: "CONFIRMED", quality: "HIGH",
+                collection: "Fine2Dine", material: "High-Fired Porcelain",
+                designer: "Fine2Dine Studio"
+            },
+            {
+                id: "P10", sku: "F63018", name: "Escura Crème Brûlée Dish",
+                url: "https://www.fine2dine.com/escura",
+                image: "https://muddle-me.com/wp-content/uploads/2020/10/dish-creme-brulee-13-5xh3cm-dark-brown-escura.jpg",
+                resolution: "1000x1000", match: "CONFIRMED", quality: "HIGH",
+                collection: "Fine2Dine", material: "High-Fired Porcelain",
+                designer: "Fine2Dine Studio"
+            },
+            {
+                id: "S1", sku: "F03643", name: "Large Round Oven Dish",
+                url: "https://www.fine2dine.com/",
+                image: "https://www.goodf.co.uk/wp-content/uploads/2024/03/large-round-oven-dish-25x6cm-h-p14019-9563_image.jpg",
+                resolution: "1000x1000", match: "CONFIRMED", quality: "HIGH",
+                collection: "Fine2Dine", material: "Porcelain"
+            },
+            // Glassware
+            {
+                id: "G1", sku: "AC13", name: "Arc Contrast Tumbler",
+                url: "https://www.lsa-international.com/arc",
+                image: "https://www.black-by-design.co.uk/images/lsa-international-arc-contrast-tumblers-coral-380ml-set-of-2-p9397-57627_zoom.jpg",
+                resolution: "2000x2000", match: "CONFIRMED", quality: "HIGH",
+                collection: "LSA", material: "Mouth-Blown Glass",
+                designer: "LSA Design"
+            },
+            {
+                id: "G2", sku: "0446/15", name: "Restaurant Riesling Glass",
+                url: "https://www.riedel.com/restaurant",
+                image: "https://bargreen2images.s3-us-west-2.amazonaws.com/RIE044615/RIE044615",
+                resolution: "1000x1000", match: "CONFIRMED", quality: "HIGH",
+                collection: "Riedel", material: "Crystal Glass",
+                designer: "Riedel Design"
+            }
+        ];
+
+        // Create Product Card
+        function createProductCard(product) {
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(product.url)}&size=100x100&bgcolor=1a1f3a&color=e0e7ff`;
+            const isAvailable = product.image !== null;
+            const qualityClass = product.quality === "HIGH" ? "quality-high" : "quality-unavailable";
+
+            return `
+                <article class="product-card p-5 fade-in" data-collection="${product.collection.toLowerCase().replace(/\s+/g, '-')}" data-quality="${product.quality}" data-match="${product.match}">
+                    <!-- Image Section -->
+                    <div class="image-glow h-56 mb-4 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center relative overflow-hidden">
+                        ${isAvailable ?
+                            `<img src="${product.image}"
+                                 alt="${product.name}"
+                                 loading="lazy"
+                                 class="w-full h-full object-contain p-4 transition-transform duration-500 hover:scale-110"
+                                 onerror="this.parentElement.innerHTML='<div class=\\'image-placeholder h-full w-full\\' ><i class=\\'fas fa-image text-6xl\\' ></i><p class=\\'text-sm\\' >Image Unavailable</p></div>'">`
+                            :
+                            `<div class="image-placeholder h-full w-full">
+                                <i class="fas fa-image text-6xl"></i>
+                                <p class="text-sm">Image Unavailable</p>
+                                <p class="text-xs">SKU: ${product.sku}</p>
+                            </div>`
+                        }
+                        <div class="absolute top-3 right-3">
+                            <span class="badge-modern ${qualityClass} text-xs">
+                                ${product.quality === "HIGH" ? '<i class="fas fa-check-circle mr-1"></i>HIGH' : '<i class="fas fa-exclamation-triangle mr-1"></i>N/A'}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div>
+                        <h3 class="text-lg font-bold text-white mb-2 line-clamp-2">${product.name}</h3>
+
+                        <div class="flex justify-between items-center mb-3 pb-3 border-b border-gray-700">
+                            <span class="text-xs font-mono text-gray-400">
+                                SKU: <span class="text-blue-400 font-semibold">${product.sku}</span>
+                            </span>
+                            <span class="text-xs text-gray-500">${product.resolution}</span>
+                        </div>
+
+                        <!-- Badges -->
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="px-2 py-1 bg-blue-500 bg-opacity-20 text-blue-300 rounded text-xs font-semibold border border-blue-500 border-opacity-30">
+                                <i class="fas fa-cube mr-1"></i>${product.material}
+                            </span>
+                            ${product.designer ?
+                                `<span class="px-2 py-1 bg-purple-500 bg-opacity-20 text-purple-300 rounded text-xs font-semibold border border-purple-500 border-opacity-30">
+                                    <i class="fas fa-user mr-1"></i>${product.designer}
+                                </span>`
+                                : ''
+                            }
+                            ${product.year ?
+                                `<span class="px-2 py-1 bg-pink-500 bg-opacity-20 text-pink-300 rounded text-xs font-semibold border border-pink-500 border-opacity-30">
+                                    <i class="fas fa-calendar mr-1"></i>${product.year}
+                                </span>`
+                                : ''
+                            }
+                        </div>
+
+                        ${product.features ?
+                            `<p class="text-xs text-gray-400 mb-3">
+                                <i class="fas fa-star text-yellow-500 mr-1"></i>${product.features}
+                            </p>`
+                            : ''
+                        }
+
+                        <!-- Footer -->
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-700">
+                            <a href="${product.url}" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 transition-colors flex items-center gap-1">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Product
+                            </a>
+                            <img src="${qrUrl}" alt="QR Code" class="w-12 h-12 rounded border border-gray-700 no-print">
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Render Products
+        function renderProducts() {
+            const davidMellorGrid = document.getElementById('david-mellor-grid');
+            const fine2dineGrid = document.getElementById('fine2dine-grid');
+            const seraxGrid = document.getElementById('serax-grid');
+            const glasswareGrid = document.getElementById('glassware-grid');
+
+            products.forEach(product => {
+                const card = createProductCard(product);
+
+                if (product.collection === "David Mellor") {
+                    davidMellorGrid.innerHTML += card;
+                } else if (product.collection === "Fine2Dine") {
+                    fine2dineGrid.innerHTML += card;
+                } else if (product.collection === "Serax") {
+                    seraxGrid.innerHTML += card;
+                } else if (product.collection === "LSA" || product.collection === "Riedel") {
+                    glasswareGrid.innerHTML += card;
+                }
+            });
+        }
+
+        // Filter Functionality
+        function setupFilters() {
+            const filterPills = document.querySelectorAll('.filter-pill');
+
+            filterPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    // Update active state
+                    filterPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+
+                    const filter = pill.getAttribute('data-filter');
+                    const cards = document.querySelectorAll('.product-card');
+
+                    cards.forEach(card => {
+                        let show = false;
+
+                        if (filter === 'all') {
+                            show = true;
+                        } else if (filter === 'confirmed') {
+                            show = card.getAttribute('data-match') === 'CONFIRMED';
+                        } else if (filter === 'high-quality') {
+                            show = card.getAttribute('data-quality') === 'HIGH';
+                        } else if (filter === 'david-mellor') {
+                            show = card.getAttribute('data-collection') === 'david-mellor';
+                        } else if (filter === 'serax') {
+                            show = card.getAttribute('data-collection') === 'serax';
+                        }
+
+                        card.style.display = show ? 'block' : 'none';
+                        if (show) {
+                            card.style.animation = 'fadeIn 0.5s ease-in-out';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Scroll Animation
+        function setupScrollAnimation() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Set Date
+        function setDate() {
+            const date = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            document.getElementById('generated-date').textContent = date;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            setupFilters();
+            setupScrollAnimation();
+            setDate();
+
+            // Trigger initial fade-in
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
